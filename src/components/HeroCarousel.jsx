@@ -33,6 +33,13 @@ export default function HeroCarousel() {
     if (!e.currentTarget.contains(e.relatedTarget)) setPaused(false);
   };
 
+  const SWIPE_THRESHOLD = 50;
+  const handleDragEnd = (e, info) => {
+    if (info.offset.x < -SWIPE_THRESHOLD) next();
+    else if (info.offset.x > SWIPE_THRESHOLD) prev();
+    setPaused(false);
+  };
+
   return (
     <section
       id="top"
@@ -49,7 +56,12 @@ export default function HeroCarousel() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: fadeDuration, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute inset-0"
+          className="absolute inset-0 cursor-grab active:cursor-grabbing"
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.6}
+          onDragStart={() => setPaused(true)}
+          onDragEnd={handleDragEnd}
         >
           <img
             src={slide.image}
@@ -65,8 +77,8 @@ export default function HeroCarousel() {
         </motion.div>
       </AnimatePresence>
 
-      <div className="relative z-10 flex min-h-[100svh] w-full items-end pb-28 pt-24 md:pb-32">
-        <div className="mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-16">
+      <div className="relative z-10 flex min-h-[100svh] w-full items-end pb-28 pt-24 md:pb-32 pointer-events-none">
+        <div className="mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-16 pointer-events-none">
           <AnimatePresence mode="wait">
             <motion.div
               key={slide.id}
@@ -74,7 +86,7 @@ export default function HeroCarousel() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: prefersReducedMotion ? 0 : -12 }}
               transition={{ duration: contentDuration, ease: [0.16, 1, 0.3, 1] }}
-              className="max-w-3xl"
+              className="max-w-3xl pointer-events-auto"
             >
               <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-gold">
                 <span className="h-px w-8 bg-gold" />
