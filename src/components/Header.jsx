@@ -2,6 +2,12 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
+const navLinks = [
+  { label: "NEISAC", href: "/#opportunities" },
+  { label: "Engineering", href: "/engineering", internal: true },
+  { label: "Mining", href: "/mining-manpower", internal: true },
+];
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -34,7 +40,32 @@ export default function Header() {
             ATS Corps
           </span>
         </Link>
-        <div />
+
+        <nav className="hidden items-center gap-6 sm:flex md:gap-8">
+          {navLinks.map((link) =>
+            link.internal ? (
+              <Link
+                key={link.label}
+                to={link.href}
+                className={`text-sm font-semibold tracking-wide transition-colors duration-500 ${
+                  scrolled ? "text-ink hover:text-primary" : "text-white/90 hover:text-white"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                className={`text-sm font-semibold tracking-wide transition-colors duration-500 ${
+                  scrolled ? "text-ink hover:text-primary" : "text-white/90 hover:text-white"
+                }`}
+              >
+                {link.label}
+              </a>
+            ),
+          )}
+        </nav>
       </div>
     </motion.header>
   );
