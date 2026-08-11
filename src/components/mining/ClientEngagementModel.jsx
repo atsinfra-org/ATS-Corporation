@@ -1,15 +1,4 @@
-import { Fragment } from "react";
-import {
-  PhoneCall,
-  ClipboardList,
-  Users,
-  BadgeCheck,
-  Truck,
-  Activity,
-  TrendingUp,
-  ArrowRight,
-  ArrowDown,
-} from "lucide-react";
+import { PhoneCall, ClipboardList, Users, BadgeCheck, Truck, Activity, TrendingUp } from "lucide-react";
 import { engagementModel } from "../../data/mining/engagementModel";
 import Container from "../ui/Container";
 import SectionHeading from "../ui/SectionHeading";
@@ -27,35 +16,35 @@ export default function ClientEngagementModel() {
           align="center"
         />
 
-        <Reveal delay={0.1}>
-          <div className="mx-auto mt-16 flex max-w-5xl flex-col items-center lg:flex-row lg:flex-wrap lg:justify-center">
+        <div className="relative mx-auto mt-20 max-w-5xl">
+          <div
+            className="absolute left-7 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/25 to-transparent lg:left-0 lg:right-0 lg:top-7 lg:bottom-auto lg:h-px lg:w-auto lg:bg-gradient-to-r"
+            aria-hidden
+          />
+
+          <div className="relative flex flex-col gap-10 lg:flex-row lg:justify-between lg:gap-4">
             {engagementModel.map((step, i) => {
               const Icon = icons[step.icon];
-              const isLast = i === engagementModel.length - 1;
               return (
-                <Fragment key={step.id}>
-                  <div className="flex flex-col items-center gap-3 px-2 py-3 text-center">
-                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/8 text-primary">
-                      <Icon className="h-5.5 w-5.5" strokeWidth={1.6} />
+                <Reveal
+                  key={step.id}
+                  delay={i * 0.05}
+                  className="flex items-center gap-4 lg:flex-col lg:items-center lg:gap-4 lg:text-center"
+                >
+                  <span className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-border bg-white text-primary shadow-soft">
+                    <Icon className="h-5.5 w-5.5" strokeWidth={1.6} />
+                    <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">
+                      {i + 1}
                     </span>
-                    <span className="font-heading text-sm font-semibold text-ink">
-                      {step.label}
-                    </span>
-                  </div>
-                  {!isLast && (
-                    <>
-                      <ArrowDown className="my-1 h-4 w-4 text-primary/40 lg:hidden" strokeWidth={1.75} />
-                      <ArrowRight
-                        className="hidden h-4 w-4 shrink-0 text-primary/40 lg:block"
-                        strokeWidth={1.75}
-                      />
-                    </>
-                  )}
-                </Fragment>
+                  </span>
+                  <span className="font-heading text-sm font-semibold text-ink lg:max-w-[6.5rem]">
+                    {step.label}
+                  </span>
+                </Reveal>
               );
             })}
           </div>
-        </Reveal>
+        </div>
       </Container>
     </section>
   );

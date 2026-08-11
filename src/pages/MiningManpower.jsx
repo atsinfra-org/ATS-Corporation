@@ -3,7 +3,9 @@ import MiningOverview from "../components/mining/MiningOverview";
 import CoreServices from "../components/mining/CoreServices";
 import WorkforceCategories from "../components/mining/WorkforceCategories";
 import DeploymentProcess from "../components/mining/DeploymentProcess";
-import IndustriesServed from "../components/mining/IndustriesServed";
+// IndustriesServed is temporarily out of the page flow — component stays in
+// place for when it's ready to come back in.
+// import IndustriesServed from "../components/mining/IndustriesServed";
 import WhyChooseATS from "../components/mining/WhyChooseATS";
 import SafetyCompliance from "../components/mining/SafetyCompliance";
 import FeaturedEngagements from "../components/mining/FeaturedEngagements";
@@ -20,7 +22,6 @@ export default function MiningManpower({ onOpenRegistration }) {
       <CoreServices onContactClick={() => onOpenRegistration("contact")} />
       <WorkforceCategories />
       <DeploymentProcess />
-      <IndustriesServed />
       <WhyChooseATS />
       <SafetyCompliance />
       <FeaturedEngagements />

@@ -51,4 +51,17 @@ export const featuredEngagements = [
     image:
       "https://images.unsplash.com/photo-1759763823587-c8bd07fca246?q=80&w=1800&auto=format&fit=crop",
   },
+  {
+    id: "geotech-survey-support",
+    name: "Geophysical & GeoTech Survey Support",
+    type: "Infrastructure Projects",
+    location: "Northeast India",
+    scope: "GNSS survey and geotechnical instrumentation support for a civil infrastructure investigation program.",
+    manpowerDeployed: "20 personnel",
+    duration: "4 months",
+    overview:
+      "Deployed trained survey personnel operating GNSS rovers and geotechnical monitoring instruments to support site investigation ahead of construction, delivering positioning and subsurface data on a rolling schedule.",
+    image:
+      "https://images.unsplash.com/photo-1628158088791-89567a8e84ec?q=80&w=1800&auto=format&fit=crop",
+  },
 ];
