@@ -1,5 +1,7 @@
 import Container from "../ui/Container";
 import Reveal from "../ui/Reveal";
+import AnimatedCounter from "../ui/AnimatedCounter";
+import { stats } from "../../data/mining/stats";
 
 const OVERVIEW_IMAGE =
   "https://images.unsplash.com/photo-1781546441738-b85e43e733e3?q=80&w=1400&auto=format&fit=crop";
@@ -31,6 +33,19 @@ export default function MiningOverview() {
               verification, safety orientation, and on-site support, from a single
               accountable team.
             </p>
+          </Reveal>
+
+          <Reveal delay={0.2} className="mt-2 grid grid-cols-3 gap-6 border-t border-border pt-8">
+            {stats.map((stat) => (
+              <div key={stat.label}>
+                <p className="font-heading text-3xl font-bold text-primary md:text-4xl">
+                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                </p>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.08em] text-muted">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
           </Reveal>
         </div>
 

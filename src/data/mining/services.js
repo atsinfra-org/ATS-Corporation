@@ -7,6 +7,7 @@ export const coreServices = [
       "End-to-end deployment of trained manpower across open-cast, underground, and beneficiation operations, scaled to production targets.",
     image:
       "https://images.unsplash.com/photo-1759763823587-c8bd07fca246?q=80&w=1200&auto=format&fit=crop",
+    featured: true,
   },
   {
     id: "geological-survey-teams",
@@ -43,6 +44,7 @@ export const coreServices = [
       "Certified operators for excavators, dump trucks, dozers, graders, and other heavy earth-moving machinery (HEMM).",
     image:
       "https://images.unsplash.com/photo-1711012604128-8339024a3e12?q=80&w=1200&auto=format&fit=crop",
+    featured: true,
   },
   {
     id: "blasting-support",

@@ -20,6 +20,7 @@
   --shadow-lift: 0 2px 4px rgba(17, 24, 39, 0.05), 0 16px 40px -16px rgba(17, 24, 39, 0.18);
 
   --animate-marquee-vertical: marquee-vertical 24s linear infinite;
+  --animate-marquee: marquee-horizontal 55s linear infinite;
 }
 
 @keyframes marquee-vertical {
@@ -28,6 +29,15 @@
   }
   to {
     transform: translateY(-50%);
+  }
+}
+
+@keyframes marquee-horizontal {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 

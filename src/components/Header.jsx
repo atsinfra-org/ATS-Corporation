@@ -46,9 +46,8 @@ export default function Header() {
       initial={{ opacity: 0, y: -12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
-        solid ? "bg-white shadow-[0_1px_0_0_rgba(17,24,39,0.06)]" : "bg-transparent"
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${solid ? "bg-white shadow-[0_1px_0_0_rgba(17,24,39,0.06)]" : "bg-transparent"
+        }`}
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-5 md:px-10 lg:px-16">
         <Link to="/" className="flex items-center gap-2.5 group">
@@ -56,11 +55,10 @@ export default function Header() {
             className={`h-2 w-2 rounded-full bg-gold transition-transform duration-500 group-hover:scale-125`}
           />
           <span
-            className={`font-heading text-lg font-bold tracking-tight transition-colors duration-500 ${
-              solid ? "text-ink" : "text-white"
-            }`}
+            className={`font-heading text-lg font-bold tracking-tight transition-colors duration-500 ${solid ? "text-ink" : "text-white"
+              }`}
           >
-            ATS Corps
+            ATS Corporation
           </span>
         </Link>
 
@@ -70,9 +68,8 @@ export default function Header() {
               <Link
                 key={link.label}
                 to={link.href}
-                className={`text-sm font-semibold tracking-wide transition-colors duration-500 ${
-                  scrolled ? "text-ink hover:text-primary" : "text-white/90 hover:text-white"
-                }`}
+                className={`text-sm font-semibold tracking-wide transition-colors duration-500 ${scrolled ? "text-ink hover:text-primary" : "text-white/90 hover:text-white"
+                  }`}
               >
                 {link.label}
               </Link>
@@ -80,9 +77,8 @@ export default function Header() {
               <a
                 key={link.label}
                 href={link.href}
-                className={`text-sm font-semibold tracking-wide transition-colors duration-500 ${
-                  scrolled ? "text-ink hover:text-primary" : "text-white/90 hover:text-white"
-                }`}
+                className={`text-sm font-semibold tracking-wide transition-colors duration-500 ${scrolled ? "text-ink hover:text-primary" : "text-white/90 hover:text-white"
+                  }`}
               >
                 {link.label}
               </a>
@@ -96,9 +92,8 @@ export default function Header() {
           aria-expanded={menuOpen}
           aria-controls="mobile-nav-panel"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
-          className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors duration-500 sm:hidden ${
-            solid ? "text-ink hover:bg-navy/5" : "text-white hover:bg-white/10"
-          }`}
+          className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors duration-500 sm:hidden ${solid ? "text-ink hover:bg-navy/5" : "text-white hover:bg-white/10"
+            }`}
         >
           {menuOpen ? (
             <X className="h-5 w-5" strokeWidth={1.75} />

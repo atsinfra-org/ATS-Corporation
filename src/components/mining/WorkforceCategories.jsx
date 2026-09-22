@@ -6,11 +6,23 @@ import Reveal from "../ui/Reveal";
 
 const icons = { Ruler, Mountain, Compass, Truck, ShieldCheck, ClipboardCheck, Hammer, Users, UserCheck };
 
-const deploymentStyles = {
-  "Long-term": { badge: "bg-primary/10 text-primary", accent: "bg-primary", icon: "bg-primary/8 text-primary" },
-  "Project-based": { badge: "bg-gold/15 text-[#9a7b1f]", accent: "bg-gold", icon: "bg-gold/12 text-[#9a7b1f]" },
-  Flexible: { badge: "bg-navy/8 text-muted", accent: "bg-navy/30", icon: "bg-navy/6 text-navy" },
-};
+const GROUPS = [
+  {
+    type: "Long-term",
+    label: "Long-Term Placements",
+    description: "Embedded roles for the life of the operation.",
+  },
+  {
+    type: "Project-based",
+    label: "Project-Based Deployment",
+    description: "Scoped to a program's duration.",
+  },
+  {
+    type: "Flexible",
+    label: "Flexible Workforce",
+    description: "Scaled up or down against shift demand.",
+  },
+];
 
 export default function WorkforceCategories() {
   return (
@@ -22,30 +34,38 @@ export default function WorkforceCategories() {
           description="From engineers to skilled labour, every role is sourced, verified, and deployed against your project's operational needs."
         />
 
-        <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {workforceCategories.map((category, i) => {
-            const Icon = icons[category.icon];
-            const styles = deploymentStyles[category.deploymentType];
+        <div className="mt-16 flex flex-col gap-14">
+          {GROUPS.map((group) => {
+            const roles = workforceCategories.filter((c) => c.deploymentType === group.type);
             return (
-              <Reveal key={category.id} delay={(i % 3) * 0.06}>
-                <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white p-7 shadow-soft transition-shadow duration-300 hover:shadow-lift">
-                  <span className={`absolute inset-y-0 left-0 w-1 ${styles.accent}`} aria-hidden />
-                  <div className="flex items-start justify-between gap-3">
-                    <span
-                      className={`flex h-12 w-12 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-105 ${styles.icon}`}
-                    >
-                      <Icon className="h-5 w-5" strokeWidth={1.6} />
-                    </span>
-                    <span className={`rounded-full px-3 py-1 text-xs font-semibold ${styles.badge}`}>
-                      {category.deploymentType}
-                    </span>
-                  </div>
-                  <h3 className="mt-6 font-heading text-lg font-semibold text-ink">
-                    {category.role}
+              <Reveal key={group.type}>
+                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                  <h3 className="font-heading text-xl font-bold text-ink md:text-2xl">
+                    {group.label}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">
-                    {category.responsibilities}
-                  </p>
+                  <p className="text-sm text-muted">{group.description}</p>
+                </div>
+
+                <div className="mt-6 divide-y divide-border border-t border-border">
+                  {roles.map((category) => {
+                    const Icon = icons[category.icon];
+                    return (
+                      <div
+                        key={category.id}
+                        className="flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:gap-8"
+                      >
+                        <span className="flex shrink-0 items-center gap-3 sm:w-56">
+                          <Icon className="h-4.5 w-4.5 text-primary" strokeWidth={1.6} />
+                          <span className="font-heading text-base font-semibold text-ink">
+                            {category.role}
+                          </span>
+                        </span>
+                        <p className="text-sm leading-relaxed text-muted">
+                          {category.responsibilities}
+                        </p>
+                      </div>
+                    );
+                  })}
                 </div>
               </Reveal>
             );

@@ -28,7 +28,7 @@ export default function LoadingScreen({ onComplete, duration = 2600 }) {
             <div className="flex items-center gap-3">
               <span className="h-2 w-2 rounded-full bg-gold" />
               <h1 className="font-heading text-3xl md:text-4xl font-bold tracking-tight text-white">
-                ATS Corps
+                ATS Corporation
               </h1>
               <span className="h-2 w-2 rounded-full bg-primary" />
             </div>

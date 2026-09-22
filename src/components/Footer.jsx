@@ -29,7 +29,7 @@ export default function Footer() {
             <span className="font-heading text-xl font-bold text-white">ATS Corps</span>
           </Link>
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/50">
-            Empowering veterans through co-working spaces, engineering consultancy,
+            Empowering veterans through working spaces, engineering consultancy,
             specialist manpower, and administrative support services across Northeast
             India.
           </p>
@@ -86,22 +86,11 @@ export default function Footer() {
       </Container>
 
       <div className="border-t border-white/10">
-        <Container className="flex flex-col items-center justify-between gap-5 py-7 md:flex-row">
+        <Container className="flex flex-col items-center justify-center gap-5 py-7 md:flex-row">
           <p className="text-xs text-white/40">
             &copy; {new Date().getFullYear()} ATS Corps. All rights reserved.
           </p>
-          <div className="flex items-center gap-3">
-            {socials.map(({ label, icon: Icon, href }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-gold hover:text-gold"
-              >
-                <Icon className="h-4 w-4" strokeWidth={1.6} />
-              </a>
-            ))}
-          </div>
+
         </Container>
       </div>
     </footer>

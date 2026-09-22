@@ -1,7 +1,7 @@
 import EngineeringHero from "../components/engineering/EngineeringHero";
 import ServiceOverview from "../components/engineering/ServiceOverview";
 import EngineeringProcess from "../components/engineering/EngineeringProcess";
-import IndustriesServed from "../components/engineering/IndustriesServed";
+import IndustriesRail from "../components/engineering/IndustriesRail";
 import FeaturedProjects from "../components/engineering/FeaturedProjects";
 import WhyATSEngineering from "../components/engineering/WhyATSEngineering";
 import DarkCTASection from "../components/ui/DarkCTASection";
@@ -13,7 +13,7 @@ export default function EngineeringConsultancy({ onOpenRegistration }) {
       <EngineeringHero />
       <ServiceOverview onContactClick={() => onOpenRegistration("contact")} />
       <EngineeringProcess />
-      <IndustriesServed />
+      <IndustriesRail />
       <FeaturedProjects />
       <WhyATSEngineering />
       <DarkCTASection

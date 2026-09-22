@@ -3,14 +3,10 @@ import MiningOverview from "../components/mining/MiningOverview";
 import CoreServices from "../components/mining/CoreServices";
 import WorkforceCategories from "../components/mining/WorkforceCategories";
 import DeploymentProcess from "../components/mining/DeploymentProcess";
-// IndustriesServed is temporarily out of the page flow — component stays in
-// place for when it's ready to come back in.
-// import IndustriesServed from "../components/mining/IndustriesServed";
-import WhyChooseATS from "../components/mining/WhyChooseATS";
-import SafetyCompliance from "../components/mining/SafetyCompliance";
+import OperationalPillars from "../components/mining/OperationalPillars";
 import FeaturedEngagements from "../components/mining/FeaturedEngagements";
-import MiningStats from "../components/mining/MiningStats";
 import ClientEngagementModel from "../components/mining/ClientEngagementModel";
+import IndustriesRail from "../components/mining/IndustriesRail";
 import DarkCTASection from "../components/ui/DarkCTASection";
 import Button from "../components/ui/Button";
 
@@ -22,11 +18,10 @@ export default function MiningManpower({ onOpenRegistration }) {
       <CoreServices onContactClick={() => onOpenRegistration("contact")} />
       <WorkforceCategories />
       <DeploymentProcess />
-      <WhyChooseATS />
-      <SafetyCompliance />
+      <OperationalPillars />
       <FeaturedEngagements />
-      <MiningStats />
       <ClientEngagementModel />
+      <IndustriesRail />
       <DarkCTASection
         id="mining-cta"
         eyebrow="Get In Touch"

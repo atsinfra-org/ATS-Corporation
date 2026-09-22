@@ -40,19 +40,28 @@ export default function CoreServices({ onContactClick }) {
           description="From exploration to full-scale extraction, we deploy the right skill mix for every phase of the operation."
         />
 
-        <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:auto-rows-auto lg:grid-cols-4 lg:[grid-auto-flow:dense]">
           {coreServices.map((service, i) => {
             const Icon = icons[service.icon];
+            const featured = !!service.featured;
             return (
-              <Reveal key={service.id} delay={(i % 4) * 0.06}>
+              <Reveal
+                key={service.id}
+                delay={(i % 4) * 0.06}
+                className={featured ? "sm:col-span-2 lg:col-span-2" : ""}
+              >
                 <motion.button
                   type="button"
                   onClick={() => setActive(service)}
                   whileHover={{ y: -6 }}
                   transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                  className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-border bg-white text-left shadow-soft"
+                  className="group flex h-full w-full flex-col overflow-hidden border border-border bg-white text-left"
                 >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                  <div
+                    className={`relative w-full overflow-hidden ${
+                      featured ? "aspect-[8/5]" : "aspect-[4/5]"
+                    }`}
+                  >
                     <img
                       src={service.image}
                       alt=""
@@ -61,20 +70,28 @@ export default function CoreServices({ onContactClick }) {
                       decoding="async"
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/10 to-transparent" />
-                    <span className="absolute bottom-3 left-3 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-primary backdrop-blur-sm">
-                      <Icon className="h-4.5 w-4.5" strokeWidth={1.6} />
-                    </span>
                   </div>
 
-                  <div className="flex flex-1 flex-col p-6">
-                    <h3 className="font-heading text-lg font-semibold text-ink">
+                  <div className={`flex flex-1 flex-col ${featured ? "p-7 md:p-8" : "p-6"}`}>
+                    <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
+                      <Icon className="h-3.5 w-3.5" strokeWidth={2} />
+                      Core Service
+                    </span>
+                    <h3
+                      className={`mt-3 font-heading font-bold leading-tight text-ink ${
+                        featured ? "text-2xl md:text-3xl uppercase" : "text-lg md:text-xl"
+                      }`}
+                    >
                       {service.name}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">
+                    <p
+                      className={`mt-3 leading-relaxed text-muted ${
+                        featured ? "max-w-md text-base" : "text-sm"
+                      }`}
+                    >
                       {service.description}
                     </p>
-                    <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-navy">
+                    <span className="mt-auto flex items-center gap-1.5 pt-6 text-sm font-semibold text-navy">
                       Learn more
                       <ArrowRight
                         className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
@@ -92,14 +109,13 @@ export default function CoreServices({ onContactClick }) {
       <Modal open={!!active} onClose={close} labelledBy="mining-service-modal-title" className="max-w-lg p-0">
         {active && (
           <>
-            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-[20px]">
+            <div className="relative aspect-[16/9] w-full overflow-hidden">
               <img
                 src={active.image}
                 alt=""
                 aria-hidden="true"
                 className="h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/10 to-transparent" />
               <button
                 type="button"
                 onClick={close}
@@ -108,16 +124,20 @@ export default function CoreServices({ onContactClick }) {
               >
                 <X className="h-4.5 w-4.5" strokeWidth={1.75} />
               </button>
-              <span className="absolute bottom-4 left-4 flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-primary backdrop-blur-sm">
-                {(() => {
-                  const Icon = icons[active.icon];
-                  return <Icon className="h-5 w-5" strokeWidth={1.6} />;
-                })()}
-              </span>
             </div>
 
             <div className="p-6 sm:p-9">
-              <h3 id="mining-service-modal-title" className="font-heading text-2xl font-bold text-ink">
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
+                {(() => {
+                  const Icon = icons[active.icon];
+                  return <Icon className="h-3.5 w-3.5" strokeWidth={2} />;
+                })()}
+                Core Service
+              </span>
+              <h3
+                id="mining-service-modal-title"
+                className="mt-3 font-heading text-2xl font-bold leading-tight text-ink"
+              >
                 {active.name}
               </h3>
               <p className="mt-3 text-base leading-relaxed text-muted">{active.description}</p>

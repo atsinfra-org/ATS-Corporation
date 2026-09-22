@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Users, Clock } from "lucide-react";
+import { MapPin, Users, Clock, Briefcase } from "lucide-react";
 import { featuredEngagements } from "../../data/mining/engagements";
 import Container from "../ui/Container";
 import SectionHeading from "../ui/SectionHeading";
@@ -21,7 +21,7 @@ export default function FeaturedEngagements() {
               <motion.article
                 whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                className="flex h-full flex-col overflow-hidden rounded-[20px] border border-border bg-white shadow-soft"
+                className="group flex h-full flex-col overflow-hidden border border-border bg-white"
               >
                 <div className="relative aspect-[16/10] w-full overflow-hidden">
                   <img
@@ -30,15 +30,13 @@ export default function FeaturedEngagements() {
                     aria-hidden="true"
                     loading="lazy"
                     decoding="async"
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <span className="absolute right-4 top-4 rounded-full bg-primary/90 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-                    {project.duration}
-                  </span>
                 </div>
 
                 <div className="flex flex-1 flex-col p-7 md:p-8">
-                  <span className="text-xs font-semibold uppercase tracking-[0.15em] text-primary">
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
+                    <Briefcase className="h-3.5 w-3.5" strokeWidth={2} />
                     {project.type}
                   </span>
                   <h3 className="mt-3 font-heading text-xl md:text-2xl font-bold text-ink">

@@ -29,15 +29,13 @@ export default function WhyATSEngineering() {
           ))}
         </div>
 
-        <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-2">
+        <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 divide-y divide-border border-t border-border sm:grid-cols-2 sm:divide-x sm:divide-y-0">
           {highlights.map((item, i) => {
             const Icon = icons[item.icon];
             return (
               <Reveal key={item.title} delay={0.2 + i * 0.08}>
-                <div className="flex items-start gap-4 rounded-2xl border border-border bg-background p-7">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/8 text-primary">
-                    <Icon className="h-5 w-5" strokeWidth={1.6} />
-                  </span>
+                <div className="flex items-start gap-4 px-1 py-7 sm:px-8 sm:first:pl-0 sm:last:pr-0">
+                  <Icon className="mt-0.5 h-5 w-5 shrink-0 text-primary" strokeWidth={1.6} />
                   <div>
                     <h3 className="font-heading text-base font-semibold text-ink">
                       {item.title}

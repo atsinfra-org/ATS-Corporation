@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Layers, CheckCircle2 } from "lucide-react";
+import { MapPin, Layers, Briefcase } from "lucide-react";
 import { featuredProjects } from "../../data/engineering/projects";
 import Container from "../ui/Container";
 import SectionHeading from "../ui/SectionHeading";
@@ -27,7 +27,7 @@ export default function FeaturedProjects() {
               <motion.article
                 whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                className="flex h-full flex-col overflow-hidden rounded-[20px] border border-border bg-white shadow-soft"
+                className="group flex h-full flex-col overflow-hidden border border-border bg-white"
               >
                 <div className="relative aspect-[16/10] w-full overflow-hidden">
                   <img
@@ -36,17 +36,13 @@ export default function FeaturedProjects() {
                     aria-hidden="true"
                     loading="lazy"
                     decoding="async"
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <span
-                    className={`absolute right-4 top-4 rounded-full px-3 py-1 text-xs font-semibold backdrop-blur-sm ${statusStyles[project.status]}`}
-                  >
-                    {project.status}
-                  </span>
                 </div>
 
                 <div className="flex flex-1 flex-col p-7 md:p-8">
-                  <span className="text-xs font-semibold uppercase tracking-[0.15em] text-primary">
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
+                    <Briefcase className="h-3.5 w-3.5" strokeWidth={2} />
                     {project.type}
                   </span>
                   <h3 className="mt-3 font-heading text-xl md:text-2xl font-bold text-ink">
@@ -68,8 +64,9 @@ export default function FeaturedProjects() {
                     {project.description}
                   </p>
 
-                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-navy">
-                    <CheckCircle2 className="h-4 w-4 text-primary" strokeWidth={1.75} />
+                  <span
+                    className={`mt-6 inline-flex w-fit items-center rounded-full px-3 py-1 text-xs font-semibold ${statusStyles[project.status]}`}
+                  >
                     {project.status}
                   </span>
                 </div>
